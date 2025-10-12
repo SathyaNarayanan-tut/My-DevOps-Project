@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: serviceexample
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/SathyaNarayanan-tut/ServiceExample.git
+    targetRevision: main
+    path: charts/serviceexample
+    helm:
+      valueFiles:
+        - values.yaml
+      parameters:
+        - name: image.repository
+          value: sathyafire/serviceexample
+        - name: image.tag
+          value: latest
+        - name: env.mongo
+          value: mongodb://mongodb:27017
+        - name: env.redis
+          value: redis-master:6379
+        - name: env.nats
+          value: nats://nats:4222
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: demo
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+
