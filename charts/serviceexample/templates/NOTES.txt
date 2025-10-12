@@ -1,0 +1,7 @@
+1) Get the service:
+   kubectl get svc -n {{ .Release.Namespace }} {{ include "serviceexample.fullname" . }}
+
+2) Port-forward (no ingress):
+   kubectl -n {{ .Release.Namespace }} port-forward svc/{{ include "serviceexample.fullname" . }} 9080:{{ .Values.service.port }}
+   Open http://localhost:9080/swagger/index.html
+

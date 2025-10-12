@@ -1,0 +1,7 @@
+apiVersion: v2
+name: serviceexample
+description: ServiceExample .NET API (MongoDB + Redis + NATS)
+type: application
+version: 0.1.0
+appVersion: "0.1.0"
+

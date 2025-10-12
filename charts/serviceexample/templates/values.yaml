@@ -1,0 +1,51 @@
+image:
+  repository: sathyafire/serviceexample
+  tag: latest
+  pullPolicy: IfNotPresent
+
+replicaCount: 1
+
+service:
+  type: ClusterIP
+  port: 9080
+
+resources:
+  requests:
+    cpu: "100m"
+    memory: "128Mi"
+  limits:
+    cpu: "500m"
+    memory: "512Mi"
+
+env:
+  mongo: "mongodb://mongodb:27017"
+  redis: "redis:6379"
+  nats:  "nats://nats:4222"
+
+ingress:
+  enabled: false
+  className: ""
+  hosts:
+    - host: serviceexample.local
+      path: /
+  tls: []
+
+livenessProbe:
+  path: /swagger/index.html
+  initialDelaySeconds: 15
+  periodSeconds: 10
+
+readinessProbe:
+  path: /swagger/index.html
+  initialDelaySeconds: 5
+  periodSeconds: 5
+
+podSecurityContext: {}
+securityContext:
+  runAsNonRoot: true
+  allowPrivilegeEscalation: false
+
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
