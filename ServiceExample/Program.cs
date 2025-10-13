@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using MongoDB.Driver;
 using ServiceExample.Repository;
 using ServiceExample.Services;
+using Prometheus;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,7 +37,11 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
+app.UseHttpMetrics();
+
 app.MapControllers();
+
+app.MapMetrics();
 
 app.UseSwagger();
 
