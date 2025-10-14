@@ -63,6 +63,8 @@ ArtifactHub Chart: https://artifacthub.io/packages/helm/sathya/serviceexample
 
 Docker Image: https://hub.docker.com/r/sathyafire/serviceexample
 
+For complete setup refer Installation_Guide PDF in root directory
+
 # Author
 
 Sathya Narayanan 
