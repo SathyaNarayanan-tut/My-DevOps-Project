@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "title": "serviceexample values",
+  "type": "object",
+  "properties": {
+    "image": {
+      "type": "object",
+      "properties": {
+        "repository": { "type": "string", "minLength": 1 },
+        "tag": { "type": "string", "minLength": 1 },
+        "pullPolicy": { "type": "string", "enum": ["IfNotPresent", "Always", "Never"] }
+      },
+      "required": ["repository", "tag"]
+    },
+    "service": {
+      "type": "object",
+      "properties": {
+        "port": { "type": "integer", "minimum": 1, "maximum": 65535 }
+      }
+    },
+    "env": {
+      "type": "object",
+      "properties": {
+        "mongo": { "type": "string", "minLength": 1 },
+        "redis": { "type": "string", "minLength": 1 },
+        "nats":  { "type": "string", "minLength": 1 }
+      }
+    }
+  },
+  "required": ["image", "env"]
+}
+
