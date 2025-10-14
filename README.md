@@ -4,7 +4,7 @@ This repository demonstrates a **production-ready DevOps setup** for a .NET 9.0 
 
 The project replicates an end-to-end DevOps workflow — from application build and containerization to Kubernetes deployment, GitOps automation, and observability — following security and reliability best practices.
 
-## Key Highlights
+# Key Highlights
 
 - **Application:** .NET 9 Web API (`ServiceExample`)
 - **Dependencies:** MongoDB, Redis and NATS messaging
@@ -19,7 +19,7 @@ The project replicates an end-to-end DevOps workflow — from application build 
 
 ---
 
-## Repository Structure
+# Repository Structure
 
 | Path | Description |
 |------|--------------|
@@ -31,7 +31,7 @@ The project replicates an end-to-end DevOps workflow — from application build 
 
 ---
 
-## Objective
+# Objective
 
 Showcase:
 - Infrastructure-as-Code deployment with Kubernetes and Helm  
@@ -68,7 +68,7 @@ Ensure you have the following installed locally:
 - [ArgoCD CLI](https://argo-cd.readthedocs.io/en/stable/)
 - [Cosign](https://docs.sigstore.dev/)
 
-## Build & CI/CD Pipeline
+### Build & CI/CD Pipeline
 
 The project uses **GitHub Actions** for continuous integration and delivery, defined in  
 `.github/workflows/ci.yml`.
@@ -137,7 +137,7 @@ docker run -p 9080:9080 sathyafire/serviceexample:latest
 
 → http://localhost:9080/swagger/index.html
 
-## Kubernetes Cluster Setup
+# Kubernetes Cluster Setup
 
 A **self-managed Kubernetes cluster** was created locally using **Minikube**, simulating a real multi-service production setup.  
 This cluster hosts all application components — MongoDB, Redis, NATS, and the .NET Web API — along with monitoring and GitOps systems.
@@ -154,14 +154,14 @@ kubectl get nodes
 
 kubectl cluster-info
 
-## To fulfill the “Storage solution” requirement, OpenEBS LocalPV was deployed for persistent volumes.
+# To fulfill the “Storage solution” requirement, OpenEBS LocalPV was deployed for persistent volumes.
 This provides dynamic local storage provisioning for MongoDB and Redis :
 
 helm repo add openebs https://openebs.github.io/charts
 helm repo update
 helm install openebs openebs/openebs --namespace openebs --create-namespace
 
-## Example : MongoDB & Redis with Persistent Volumes
+# Example : MongoDB & Redis with Persistent Volumes
 
 MongoDB
 helm upgrade --install mongodb bitnami/mongodb -n demo \
@@ -181,13 +181,13 @@ helm upgrade --install redis bitnami/redis -n demo \
   --set master.persistence.size=1Gi \
   --set fullnameOverride=redis
 
-## Create namespaces :
+# Create namespaces :
 
 kubectl create namespace demo
 kubectl create namespace monitoring
 kubectl create namespace argocd
 
-## Helm Chart & Deployment
+# Helm Chart & Deployment
 
 The application is fully **containerized and deployed using Helm**.  
 A custom chart was created under `charts/serviceexample/` to automate the deployment of the .NET API and its configurations.
@@ -268,7 +268,7 @@ cosign sign --key cosign.key registry-1.docker.io/sathyafire/serviceexample:0.1.
 
 Public key available : security/cosign.pub 
 
-## GitOps Deployment with Argo CD
+# GitOps Deployment with Argo CD
 
 Application deployments are fully automated using **Argo CD**, which continuously watches the GitHub repository and synchronizes the Kubernetes cluster state with it.
 
@@ -299,7 +299,7 @@ Apply to the cluster: kubectl apply -f gitops/serviceexample-app.yaml
 - Each new Helm chart or Docker image tag triggers re-deployment.
 - You can view status in the Argo CD UI (Synced, Healthy states).
 
-## Observability and Monitoring
+# Observability and Monitoring
 
 The application includes a full **observability stack** powered by **Prometheus** and **Grafana**,  
 with the .NET service instrumented to expose runtime metrics at `/metrics`.
@@ -328,7 +328,7 @@ http://localhost:3000
 
 The .NET service exposes metrics via prometheus-net.AspNetCore.
 
-## Secure Access (Optional TLS)
+# Secure Access (Optional TLS)
 
 Grafana and Prometheus endpoints can be TLS-enabled using a custom Ingress or NGINX ingress controller with self-signed certificates.
 minikube addons enable ingress
