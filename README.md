@@ -1,10 +1,10 @@
-### Mirasys DevOps Assignment
+# Mirasys DevOps Assignment
 
 This repository demonstrates a **production-ready DevOps setup** for a .NET 9.0 microservice using modern containerization, CI/CD, observability, and GitOps practices.
 
 The project replicates an end-to-end DevOps workflow — from application build and containerization to Kubernetes deployment, GitOps automation, and observability — following security and reliability best practices.
 
-# Key Highlights
+## Key Highlights
 
 - **Application:** .NET 9 Web API (`ServiceExample`)
 - **Dependencies:** MongoDB, Redis and NATS messaging
@@ -19,7 +19,7 @@ The project replicates an end-to-end DevOps workflow — from application build 
 
 ---
 
-# Repository Structure
+## Repository Structure
 
 | Path | Description |
 |------|--------------|
