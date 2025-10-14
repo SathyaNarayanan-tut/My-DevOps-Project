@@ -1,28 +1,72 @@
-# ServiceExample
+# Mirasys DevOps Assignment – ServiceExample
 
-This service sample demonstrates how to use .NET Web API service with:
-* NATS messaging (sending and receiving messages)
-* HTTP endpoint with OpenAPI/Swagger documentation
-* Redis cache for list requests
-* MongoDB for data storage
+## Overview
 
-Service sends and receives person messages using NATS messaging system, stores them in MongoDB, and caches list requests in Redis for improved performance.
+This repository contains the Mirasys DevOps Assignment solution a complete, production-grade .NET 9 Web API deployed using Docker, Kubernetes, Helm, and Argo CD, with full CI/CD, observability, and security automation. 
+The project demonstrates how to design, containerize, deploy, and operate a modern microservice-based application with GitOps, Prometheus metrics, persistent storage, and secure supply chain signing.
 
-# To run it in k8s those environment variables must be set:
-Aspire__MongoDB__Driver__ConnectionString="mongodb://mongo:27017"
-Aspire__StackExchange__Redis__ConnectionString="redis:6379"
-Aspire__NATS__Net__ConnectionString="nats://nats:4222"
+## Key Features
 
-Where mongo, redis and nats are the service names in the k8s cluster.
+- Fully containerized .NET Web API
 
-# To run unit tests navigate to the solution folder and run:
-dotnet test
+- MongoDB + Redis + NATS integration
 
-# To test API locally, this URL can be used:
-http://localhost:9080/swagger/index.html
+- Helm chart for declarative deployment
 
-This API enpoint should be available: 
-http://localhost:9080/api/Person
+- GitOps pipeline using Argo CD
 
-Dockerfile is provided to build the image. 
-Also, docker-compose.yaml is provided to run it locally with required dependencies.
+- CI/CD via GitHub Actions
+
+- Monitoring stack with Prometheus + Grafana
+
+- Persistent storage with OpenEBS Local PV
+
+- Secure artifacts signed using Sigstore Cosign
+
+# Implemented Components
+
+## CI/CD
+
+Automated pipeline with build, test, image push, and Helm publish.
+
+Images are pushed to Docker Hub (sathyafire/serviceexample).
+
+Helm chart is published to ArtifactHub as OCI registry.
+
+## Kubernetes + GitOps
+
+Deployed on Minikube for local testing.
+
+GitOps via Argo CD monitors GitHub and syncs Helm releases automatically.
+
+## Monitoring
+
+Prometheus scrapes /metrics exposed by the app.
+
+Grafana dashboards visualize .NET performance and HTTP metrics.
+
+## Storage
+
+OpenEBS Local PV provides persistent volumes for MongoDB and Redis.
+
+## Security
+
+Docker and Helm artifacts digitally signed with Cosign.
+
+Secrets stored securely in GitHub Actions secrets.
+
+Containers run as non-root, with CPU/memory limits.
+
+## Related Resources
+
+ArtifactHub Chart: https://artifacthub.io/packages/helm/sathya/serviceexample
+
+Docker Image: https://hub.docker.com/r/sathyafire/serviceexample
+
+# Author
+
+Sathya Narayanan 
+
+sathya.austin@gmail.com
+GitHub: SathyaNarayanan-tut
+
