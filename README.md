@@ -1,10 +1,10 @@
-# Mirasys DevOps Assignment
+### Mirasys DevOps Assignment
 
 This repository demonstrates a **production-ready DevOps setup** for a .NET 9.0 microservice using modern containerization, CI/CD, observability, and GitOps practices.
 
 The project replicates an end-to-end DevOps workflow — from application build and containerization to Kubernetes deployment, GitOps automation, and observability — following security and reliability best practices.
 
-### Key Highlights
+## Key Highlights
 
 - **Application:** .NET 9 Web API (`ServiceExample`)
 - **Dependencies:** MongoDB, Redis and NATS messaging
@@ -41,7 +41,7 @@ Showcase:
 
 ---
 
-## Tech Stack
+### Tech Stack
 
 | Category | Tools / Frameworks |
 |-----------|--------------------|
@@ -57,7 +57,7 @@ Showcase:
 
 ---
 
-## 🧾 Prerequisites
+### Prerequisites
 
 Ensure you have the following installed locally:
 
@@ -163,7 +163,7 @@ helm install openebs openebs/openebs --namespace openebs --create-namespace
 
 ## Example : MongoDB & Redis with Persistent Volumes
 
-# MongoDB
+MongoDB
 helm upgrade --install mongodb bitnami/mongodb -n demo \
   --set architecture=standalone \
   --set auth.enabled=false \
@@ -172,7 +172,7 @@ helm upgrade --install mongodb bitnami/mongodb -n demo \
   --set persistence.size=2Gi \
   --set fullnameOverride=mongodb
 
-# Redis
+Redis
 helm upgrade --install redis bitnami/redis -n demo \
   --set architecture=standalone \
   --set auth.enabled=false \
@@ -201,11 +201,11 @@ charts/serviceexample/
 ├── values.yaml
 ├── values.schema.json
 ├── templates/
-│ ├── _helpers.tpl
-│ ├── deployment.yaml
-│ ├── service.yaml
-│ ├── ingress.yaml
-│ ├── NOTES.txt
+│   ├── _helpers.tpl
+│   ├── deployment.yaml
+│   ├── service.yaml
+│   ├── ingress.yaml
+│   └── NOTES.txt
 └── artifacthub-repo.yml
 
 
@@ -255,7 +255,7 @@ kubectl get svc -n demo
 
 kubectl -n demo port-forward svc/svc-serviceexample 9080:9080
 
-# Open → http://localhost:9080/swagger/index.html
+Open → http://localhost:9080/swagger/index.html
 
 # The chart is also published as an OCI Helm package on Docker Hub and linked to ArtifactHub :
 
@@ -286,7 +286,8 @@ helm install argocd argo/argo-cd -n argocd
 kubectl get pods -n argocd
 
 kubectl port-forward svc/argocd-server -n argocd 8080:443
-# Open in browser → https://localhost:8080
+
+Open in browser → https://localhost:8080
 
 Retrive Password : kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
 
