@@ -68,7 +68,7 @@ Ensure you have the following installed locally:
 - [ArgoCD CLI](https://argo-cd.readthedocs.io/en/stable/)
 - [Cosign](https://docs.sigstore.dev/)
 
-## ⚙️ Build & CI/CD Pipeline
+## Build & CI/CD Pipeline
 
 The project uses **GitHub Actions** for continuous integration and delivery, defined in  
 `.github/workflows/ci.yml`.
@@ -128,11 +128,14 @@ Each commit to the `main` branch triggers a workflow with the following stages:
 If you want to build and test locally instead of CI:
 
 # Build Docker image locally
+
 docker build -t sathyafire/serviceexample:latest -f ServiceExample/Dockerfile .
 
 # Run locally and access Swagger
+
 docker run -p 9080:9080 sathyafire/serviceexample:latest
-# → http://localhost:9080/swagger/index.html
+
+→ http://localhost:9080/swagger/index.html
 
 ## Kubernetes Cluster Setup
 
