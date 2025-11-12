@@ -1,4 +1,4 @@
-# Mirasys DevOps Assignment – ServiceExample
+# My Devops Project – ServiceExample
 
 ## Overview
 
