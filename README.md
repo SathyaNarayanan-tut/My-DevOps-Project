@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository contains the Mirasys DevOps Assignment solution a complete, production-grade .NET 9 Web API deployed using Docker, Kubernetes, Helm, and Argo CD, with full CI/CD, observability, and security automation. 
+This repository contains the DevOps solution a complete, production-grade .NET 9 Web API deployed using Docker, Kubernetes, Helm, and Argo CD, with full CI/CD, observability, and security automation. 
 The project demonstrates how to design, containerize, deploy, and operate a modern microservice-based application with GitOps, Prometheus metrics, persistent storage, and secure supply chain signing.
 
 ## Key Features
